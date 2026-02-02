@@ -1,4 +1,13 @@
+"""
+Module 02 - ex0: First exception handling.
+
+Introduces basic try/except to validate and handle invalid input safely.
+"""
+
+
 def check_temperature(temp_str: str):
+	"""Validate a temperature value and handle conversion and range errors."""
+
    try:
       temp = int(temp_str)
    except ValueError:
@@ -16,6 +25,8 @@ def check_temperature(temp_str: str):
    return temp
 
 def test_temperature_input():
+	"""Demonstrate temperature validation with valid and invalid inputs."""
+	
    print("=== Garden Temperature Checker ===")
 
    tests = ["25", "abc", "100", "-50"]

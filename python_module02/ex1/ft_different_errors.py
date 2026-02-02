@@ -1,4 +1,12 @@
+"""
+Module 02 - ex1: Different error types.
+
+Demonstrates handling multiple built-in exception types using try/except.
+"""
+
 def garden_operations():
+	"""Trigger and catch different common Python exceptions."""
+
     print("Testing ValueError...")
     try:
         int("abc")
@@ -26,6 +34,8 @@ def garden_operations():
 
 
 def test_error_types():
+	"""Demonstrate individual and grouped exception handling."""
+	
     print("=== Garden Error Types Demo ===")
 
     garden_operations()

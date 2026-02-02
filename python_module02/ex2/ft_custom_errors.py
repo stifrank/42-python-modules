@@ -1,24 +1,42 @@
+"""
+Module 02 - ex2: Custom errors.
+
+Defines custom exception classes and demonstrates raising and catching them.
+"""
+
 class GardenError(Exception):
+	"""Base exception for garden-related errors."""
+
     pass
 
 
 class PlantError(GardenError):
+	"""Exception raised for plant-related issues."""
+
     pass
 
 
 class WaterError(GardenError):
+	"""Exception raised for watering-related issues."""
+
     pass
 
 
 def trigger_plant_error():
+	"""Raise a PlantError to simulate a plant-related failure."""
+
     raise PlantError("The tomato plant is wilting!")
 
 
 def trigger_water_error():
+	"""Raise a WaterError to simulate a watering-related failure."""
+
     raise WaterError("Not enough water in the tank!")
 
 
 def test_custom_errors():
+	"""Demonstrate catching specific and base custom exceptions."""
+	
     print("=== Custom Garden Errors Demo ===")
 
     print("Testing PlantError...")

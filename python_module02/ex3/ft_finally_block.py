@@ -1,4 +1,12 @@
+"""
+Module 02 - ex3: Finally block.
+
+Demonstrates using finally to ensure cleanup always occurs.
+"""
+
 def water_plants(plant_list):
+	"""Water plants and always close the watering system using finally."""
+
     print("Opening watering system")
     try:
         for plant in plant_list:
@@ -13,6 +21,8 @@ def water_plants(plant_list):
 
 
 def test_watering_system():
+	"""Demonstrate cleanup behavior with valid and invalid plant lists."""
+	
     print("=== Garden Watering System ===")
 
     print("Testing normal watering...")

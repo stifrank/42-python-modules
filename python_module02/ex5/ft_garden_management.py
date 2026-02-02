@@ -1,20 +1,38 @@
+"""
+Module 02 - ex5: Garden management.
+
+Combines custom errors, raise, try/except, and finally in a garden system.
+"""
+
 class GardenError(Exception):
+	"""Base exception for garden management errors."""
+
     pass
 
 
 class PlantError(GardenError):
+	"""Exception raised when plant data is invalid."""
+
     pass
 
 
 class WaterError(GardenError):
+	"""Exception raised for watering system failures."""
+
     pass
 
 
 class GardenManager:
+	"""Manage plants and handle garden operations safely."""
+
     def __init__(self):
+		"""Initialize the garden manager with an empty plant list."""
+		
         self.plants = []
 
     def add_plant(self, plant_name, water_level, sunlight_hours):
+		"""Add a plant to the garden or raise an error if invalid."""
+
         if not plant_name:
             raise PlantError("Plant name cannot be empty!")
         self.plants.append(
@@ -27,6 +45,8 @@ class GardenManager:
         print(f"Added {plant_name} successfully")
 
     def water_plants(self):
+		"""Water all plants and always clean up the watering system."""
+
         print("Opening watering system")
         try:
             for plant in self.plants:
@@ -35,7 +55,8 @@ class GardenManager:
             print("Closing watering system (cleanup)")
 
     def check_plant_health(self, plant_name, water_level, sunlight_hours):
-        # Reglas del ex4, pero aquí dentro del gestor
+		"""Check health conditions for a single plant."""
+    
         if not plant_name:
             raise ValueError("Plant name cannot be empty!")
 
@@ -52,6 +73,8 @@ class GardenManager:
         print(f"{plant_name}: healthy (water: {water_level}, sun: {sunlight_hours})")
 
     def check_all_health(self):
+		"""Check health conditions for all plants in the garden."""
+
         print("Checking plant health...")
         for plant in self.plants:
             try:
@@ -61,6 +84,8 @@ class GardenManager:
 
 
 def test_garden_management():
+	"""Demonstrate full garden management with error handling and cleanup."""
+
     print("=== Garden Management System ===")
     manager = GardenManager()
 
