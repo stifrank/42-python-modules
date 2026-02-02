@@ -1,16 +1,32 @@
+"""
+Module 01 - ex6: Garden analytics.
+
+Analyzes multiple plants to compute average statistics.
+"""
+
 class Plant:
+	"""Represent a plant used for garden analysis."""
+
     def __init__(self, name: str, height: int, age: int):
+		"""Initialize plant attributes."""
+
         self._name = name
         self._height = height
         self._age = age
 
     def get_height(self):
+		"""Return the plant height."""
+
         return self._height
 
     def get_age(self):
+		"""Return the plant age."""
+
         return self._age
 
     def display_info(self):
+		"""Display plant information."""
+		
         print(f"{self._name}: {self._height}cm, {self._age} days old")
 
 if __name__ == "__main__":

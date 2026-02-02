@@ -1,13 +1,27 @@
+"""
+Module 01 - ex3: Plant factory.
+
+Creates Plant objects using a factory function.
+"""
+
 class Plant:
+	"""Represent a basic plant."""
+
    def __init__(self, name: str, height: int, age: int):
+	"""Initialize plant attributes."""
+
       self.name = name
       self.height = height
       self.age = age
 
    def display_info(self):
+	"""Display plant information."""
+
       print(f"{self.name}: {self.height}cm, {self.age} days old")
 
 def plant_factory(plant_type: str) -> Plant | None:
+	"""Create and return a Plant instance based on the plant type."""
+	
    if plant_type == "rose":
       return Plant("Rose", 25, 30)
    elif plant_type == "sunflower":

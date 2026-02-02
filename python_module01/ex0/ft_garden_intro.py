@@ -1,3 +1,9 @@
+"""
+Module 01 - ex0: Garden intro.
+
+This script demonstrates the Python entry point using __name__ == "__main__".
+"""
+
 if __name__ == "__main__":
     plant_name = "Rose"
     plant_height = 25
