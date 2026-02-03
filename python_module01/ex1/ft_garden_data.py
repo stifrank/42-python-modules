@@ -1,9 +1,9 @@
 """
 Module 01 - ex1: Garden data.
 
-This script defines a Plant class and displays information for multiple plants using the format provided in the subject example.
+This script defines a Plant class and displays information for multiple plants
+using the format provided in the subject example.
 """
-
 
 
 class Plant:

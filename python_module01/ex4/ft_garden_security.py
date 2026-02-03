@@ -1,8 +1,9 @@
 """
 Module 01 - ex4: Garden security system.
 
-This script defines a SecurePlant class that protects sensitive plant data using
-controlled setters/getters with validation, printing the exact output shown in the subject example.
+This script defines a SecurePlant class that protects sensitive plant data
+using controlled setters/getters with validation, printing the exact output
+shown in the subject example.
 """
 
 
@@ -26,7 +27,10 @@ class SecurePlant:
         """
 
         if height_cm < 0:
-            print(f"Invalid operation attempted: height {height_cm}cm [REJECTED]")
+            print(
+                f"Invalid operation attempted: height {height_cm}cm"
+                "[REJECTED]"
+                )
             print("Security: Negative height rejected")
             return
         self._height_cm = height_cm
@@ -38,7 +42,10 @@ class SecurePlant:
         """
 
         if age_days < 0:
-            print(f"Invalid operation attempted: age {age_days} days [REJECTED]")
+            print(
+                f"Invalid operation attempted: age {age_days} days"
+                "[REJECTED]"
+                )
             print("Security: Negative age rejected")
             return
         self._age_days = age_days
@@ -68,4 +75,7 @@ plant.set_age(30)
 print()
 plant.set_height(-5)
 print()
-print(f"Current plant: {plant.name} ({plant.get_height()}cm, {plant.get_age()} days)")
+print(
+    f"Current plant: {plant.name} ({plant.get_height()}cm, {plant.get_age()}"
+    "days)"
+    )

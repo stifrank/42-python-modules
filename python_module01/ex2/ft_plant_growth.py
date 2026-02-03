@@ -1,9 +1,9 @@
 """
 Module 01 - ex3: Plant factory.
 
-This script defines a PlantFactory class responsible for creating Plant objects,
-tracking how many plants have been created, and printing the factory output
-exactly as specified in the subject example.
+This script defines a PlantFactory class responsible for creating Plant
+objects, tracking how many plants have been created, and printing the factory
+output exactly as specified in the subject example.
 """
 
 

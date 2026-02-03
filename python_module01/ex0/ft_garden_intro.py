@@ -1,7 +1,8 @@
 """
 Module 01 - ex0: Garden intro.
 
-This script demonstrates the program entry point using if __name__ == "__main__" and prints simple plant information stored in variables.
+Demonstrates the program entry point using if __name__ == "__main__"
+and prints simple plant information stored in variables.
 """
 
 if __name__ == "__main__":
@@ -14,4 +15,3 @@ if __name__ == "__main__":
     print(f"Plant Height: {plant_height} cm")
     print(f"Plant Age: {plant_age} days")
     print("=== End of Program ===")
-    

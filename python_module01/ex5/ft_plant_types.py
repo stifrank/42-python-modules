@@ -1,7 +1,9 @@
 """
 Module 01 - ex5: Plant types.
 
-This script defines a base Plant class and specialized plant types (Flower, Tree, Vegetable) using inheritance and super(), and prints the exact output shown in the subject example.
+This script defines a base Plant class and specialized plant types (Flower,
+Tree, Vegetable) using inheritance and super(), and prints the exact output
+shown in the subject example.
 """
 
 
@@ -27,7 +29,8 @@ class Flower(Plant):
 
     def __init__(self, name, height_cm, age_days, color):
         """
-        Initializes a flower and calls the parent configuration using super().__init__().
+        Initializes a flower and calls the parent configuration using
+        super().__init__().
         """
 
         super().__init__(name, height_cm, age_days)
@@ -48,7 +51,8 @@ class Tree(Plant):
 
     def __init__(self, name, height_cm, age_days, trunk_diameter):
         """
-        Initializes a tree and calls the parent configuration using super().__init__().
+        Initializes a tree and calls the parent configuration using
+        super().__init__().
         """
 
         super().__init__(name, height_cm, age_days)
@@ -68,9 +72,15 @@ class Vegetable(Plant):
     Represents a vegetable with a harvest season and nutritional value.
     """
 
-    def __init__(self, name, height_cm, age_days, harvest_season, nutritional_value):
+    def __init__(self,
+                 name,
+                 height_cm,
+                 age_days,
+                 harvest_season,
+                 nutritional_value):
         """
-        Initializes a vegetable and calls the parent configuration using super().__init__().
+        Initializes a vegetable and calls the parent configuration using
+        super().__init__().
         """
 
         super().__init__(name, height_cm, age_days)
@@ -88,11 +98,16 @@ vegetable2 = Vegetable("Carrot", 30, 60, "spring", "beta-carotene")
 
 print("=== Garden Plant Types ===")
 print()
-print(f"{flower1.name} (Flower): {flower1.height_cm}cm, {flower1.age_days} days, {flower1.color} color")
+print(
+    f"{flower1.name} (Flower): {flower1.height_cm}cm, {flower1.age_days}"
+    "days, {flower1.color} color"
+)
 flower1.bloom()
 print()
-print(f"{tree1.name} (Tree): {tree1.height_cm}cm, {tree1.age_days} days, {tree1.trunk_diameter}cm diameter")
+print(f"{tree1.name} (Tree): {tree1.height_cm}cm, {tree1.age_days} days, \
+{tree1.trunk_diameter}cm diameter")
 tree1.produce_shade()
 print()
-print(f"{vegetable1.name} (Vegetable): {vegetable1.height_cm}cm, {vegetable1.age_days} days, {vegetable1.harvest_season} harvest")
+print(f"{vegetable1.name} (Vegetable): {vegetable1.height_cm}cm, \
+{vegetable1.age_days} days, {vegetable1.harvest_season} harvest")
 print(f"{vegetable1.name} is rich in {vegetable1.nutritional_value}")

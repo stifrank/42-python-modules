@@ -1,8 +1,9 @@
 """
 Module 01 - ex6: Garden analytics platform.
 
-This script builds a garden analytics system using nested components and inheritance chains,
-showing instance methods, class methods, and utility methods with the exact output format from the subject example.
+This script builds a garden analytics system using nested components and
+inheritance chains, showing instance methods, class methods, and utility
+methods with the exact output format from the subject example.
 """
 
 
@@ -49,7 +50,8 @@ class FloweringPlant(Plant):
 
     def __init__(self, name, height_cm, flower_color):
         """
-        Initializes a flowering plant and calls the parent initializer using super().
+        Initializes a flowering plant and calls the parent initializer using
+        super().
         """
 
         super().__init__(name, height_cm)
@@ -78,7 +80,8 @@ class FloweringPlant(Plant):
         """
 
         status = " (blooming)" if self.blooming else ""
-        return f"- {self.name}: {self.height_cm}cm, {self.flower_color} flowers{status}"
+        return f"- {self.name}: {self.height_cm}cm, {self.flower_color} \
+flowers{status}"
 
     def plant_type(self):
         """
@@ -95,7 +98,8 @@ class PrizeFlower(FloweringPlant):
 
     def __init__(self, name, height_cm, flower_color, prize_points):
         """
-        Initializes a prize flower and calls the parent initializer using super().
+        Initializes a prize flower and calls the parent initializer using
+        super().
         """
 
         super().__init__(name, height_cm, flower_color)
@@ -176,7 +180,8 @@ class GardenManager:
 
         def score_garden(self, garden):
             """
-            Computes a garden score based on heights, prize points, and plant count.
+            Computes a garden score based on heights, prize points, and plant
+            count.
             """
 
             height_sum = 0
@@ -198,7 +203,8 @@ class GardenManager:
     @classmethod
     def create_garden_network(cls):
         """
-        Class method that creates a new GardenManager network and tracks total managers.
+        Class method that creates a new GardenManager network and tracks total
+        managers.
         """
 
         cls.total_gardens_managed += 1
@@ -252,7 +258,8 @@ print(oak.report_line())
 print(rose.report_line())
 print(sunflower.report_line())
 print()
-print(f"Plants added: {len(alice_garden.plants)}, Total growth: {alice_garden.total_growth}cm")
+print(f"Plants added: {len(alice_garden.plants)}, Total growth: \
+{alice_garden.total_growth}cm")
 
 type_counts = manager.stats.count_plant_types(alice_garden)
 print(

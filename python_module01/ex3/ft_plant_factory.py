@@ -1,7 +1,8 @@
 """
 Module 01 - ex3: Plant factory.
 
-This script creates multiple Plant objects efficiently and prints a registry of all created plants using the exact output format from the subject example.
+This script creates multiple Plant objects efficiently and prints a registry
+of all created plants using the exact output format from the subject example.
 """
 
 
