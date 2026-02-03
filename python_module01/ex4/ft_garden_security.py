@@ -1,37 +1,71 @@
 """
-Module 01 - ex4: Garden security.
+Module 01 - ex4: Garden security system.
 
-Demonstrates encapsulation by protecting plant attributes.
+This script defines a SecurePlant class that protects sensitive plant data using
+controlled setters/getters with validation, printing the exact output shown in the subject example.
 """
 
-class Plant:
-	"""Represent a plant with protected attributes."""
 
-   def __init__(self, name: str, height: int, age: int):
-	"""Initialize protected plant attributes."""
+class SecurePlant:
+    """
+    Protects plant data by preventing direct invalid updates.
+    """
 
-      self._name = name
-      self._height = height
-      self._age = age
+    def __init__(self, name):
+        """
+        Initializes a secure plant with a name and safe default values.
+        """
 
-   def grow(self, days: int):
-	"""Safely grow the plant by a given number of days."""
+        self.name = name
+        self._height_cm = 0
+        self._age_days = 0
 
-      self._age += days
-      self._height += days
+    def set_height(self, height_cm):
+        """
+        Sets the plant height if valid, otherwise rejects negative values.
+        """
 
-   def display_info(self):
-	"""Display protected plant information."""
-	
-      print(f"{self._name}: {self._height}cm, {self._age} days old")
+        if height_cm < 0:
+            print(f"Invalid operation attempted: height {height_cm}cm [REJECTED]")
+            print("Security: Negative height rejected")
+            return
+        self._height_cm = height_cm
+        print(f"Height updated: {self._height_cm}cm [OK]")
 
-if __name__ == "__main__":
-   plant = Plant("Letucce", 10, 5)
+    def set_age(self, age_days):
+        """
+        Sets the plant age if valid, otherwise rejects negative values.
+        """
 
-   print("Before growth:")
-   plant.display_info()
+        if age_days < 0:
+            print(f"Invalid operation attempted: age {age_days} days [REJECTED]")
+            print("Security: Negative age rejected")
+            return
+        self._age_days = age_days
+        print(f"Age updated: {self._age_days} days [OK]")
 
-   plant.grow(7)
+    def get_height(self):
+        """
+        Returns the current height in centimeters.
+        """
 
-   print("After growth:")
-   plant.display_info()
+        return self._height_cm
+
+    def get_age(self):
+        """
+        Returns the current age in days.
+        """
+
+        return self._age_days
+
+
+print("=== Garden Security System ===")
+plant = SecurePlant("Rose")
+print("Plant created: Rose")
+
+plant.set_height(25)
+plant.set_age(30)
+print()
+plant.set_height(-5)
+print()
+print(f"Current plant: {plant.name} ({plant.get_height()}cm, {plant.get_age()} days)")

@@ -1,46 +1,36 @@
 """
 Module 01 - ex3: Plant factory.
 
-Creates Plant objects using a factory function.
+This script creates multiple Plant objects efficiently and prints a registry of all created plants using the exact output format from the subject example.
 """
 
+
 class Plant:
-	"""Represent a basic plant."""
+    """
+    Represents a plant with a name, height in centimeters, and age in days.
+    """
 
-   def __init__(self, name: str, height: int, age: int):
-	"""Initialize plant attributes."""
+    def __init__(self, name, height_cm, age_days):
+        """
+        Initializes a plant with its basic attributes.
+        """
 
-      self.name = name
-      self.height = height
-      self.age = age
+        self.name = name
+        self.height_cm = height_cm
+        self.age_days = age_days
 
-   def display_info(self):
-	"""Display plant information."""
 
-      print(f"{self.name}: {self.height}cm, {self.age} days old")
+plant1 = Plant("Rose", 25, 30)
+plant2 = Plant("Oak", 200, 365)
+plant3 = Plant("Cactus", 5, 90)
+plant4 = Plant("Sunflower", 80, 45)
+plant5 = Plant("Fern", 15, 120)
 
-def plant_factory(plant_type: str) -> Plant | None:
-	"""Create and return a Plant instance based on the plant type."""
-	
-   if plant_type == "rose":
-      return Plant("Rose", 25, 30)
-   elif plant_type == "sunflower":
-      return Plant("Sunflower", 80, 45)
-   elif plant_type == "cactus":
-      return Plant("Cactus", 15, 120)
-   else:
-      return None
-   
-if __name__ == "__main__":
-   plants = []
-
-   plants.append(plant_factory("rose"))
-   plants.append(plant_factory("sunflower"))
-   plants.append(plant_factory("cactus"))
-   plants.append(plant_factory("tree"))
-
-   for plant in plants:
-      if plant:
-         plant.display_info()
-      else:
-         print("Unknown plant type")
+print("=== Plant Factory Output ===")
+print(f"Created: {plant1.name} ({plant1.height_cm}cm, {plant1.age_days} days)")
+print(f"Created: {plant2.name} ({plant2.height_cm}cm, {plant2.age_days} days)")
+print(f"Created: {plant3.name} ({plant3.height_cm}cm, {plant3.age_days} days)")
+print(f"Created: {plant4.name} ({plant4.height_cm}cm, {plant4.age_days} days)")
+print(f"Created: {plant5.name} ({plant5.height_cm}cm, {plant5.age_days} days)")
+print()
+print("Total plants created: 5")

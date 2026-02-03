@@ -1,31 +1,31 @@
 """
-Module 01 - ex0: Garden intro.
+Module 01 - ex1: Garden data.
 
-This script demonstrates the Python entry point using __name__ == "__main__".
+This script defines a Plant class and displays information for multiple plants using the format provided in the subject example.
 """
 
+
+
 class Plant:
-	"""Represent a plant with basic attributes."""
+    """
+    Represents a plant with a name, height in centimeters, and age in days.
+    """
 
-   def __init__(self, name: str, height: int, age: int):
-	"""Initialize a plant with name, height, and age."""
+    def __init__(self, name, height_cm, age_days):
+        """
+        Initializes a plant with its basic attributes.
+        """
 
-      self.name = name
-      self.height = height
-      self.age = age
+        self.name = name
+        self.height_cm = height_cm
+        self.age_days = age_days
 
-   def display_info(self):
-	"""Display the plant information."""
-	
-      print(f"{self.name}: {self.height}cm, {self.age} days old")
 
-if __name__ == "__main__":
-   print("=== Garden Plants Registry ===")
+plant1 = Plant("Rose", 25, 30)
+plant2 = Plant("Sunflower", 80, 45)
+plant3 = Plant("Cactus", 15, 120)
 
-   plant1 = Plant("Rose", 25, 30)
-   plant2 = Plant("Sunlflower", 80, 45)
-   plant3 = Plant("Cactus", 15, 120)
-
-   plant1.display_info()
-   plant2.display_info()
-   plant3.display_info()
+print("=== Garden Plant Registry ===")
+print(f"{plant1.name}: {plant1.height_cm}cm, {plant1.age_days} days old")
+print(f"{plant2.name}: {plant2.height_cm}cm, {plant2.age_days} days old")
+print(f"{plant3.name}: {plant3.height_cm}cm, {plant3.age_days} days old")

@@ -1,7 +1,7 @@
 """
 Module 01 - ex0: Garden intro.
 
-This script demonstrates the Python entry point using __name__ == "__main__".
+This script demonstrates the program entry point using if __name__ == "__main__" and prints simple plant information stored in variables.
 """
 
 if __name__ == "__main__":

@@ -1,37 +1,61 @@
 """
-Module 01 - ex2: Plant growth.
+Module 01 - ex3: Plant factory.
 
-Adds behavior to a Plant object allowing it to grow over time.
+This script defines a PlantFactory class responsible for creating Plant objects,
+tracking how many plants have been created, and printing the factory output
+exactly as specified in the subject example.
 """
 
+
 class Plant:
-	"""Represent a plant that can grow over time."""
+    """
+    Represents a plant with a name, height in centimeters, and age in days.
+    """
 
-   def __init__(self, name: str, height: int, age: int):
-	"""Initialize the plant attributes."""
+    def __init__(self, name, height_cm, age_days):
+        """
+        Initializes a plant with its basic attributes.
+        """
 
-      self.name = name
-      self.height = height
-      self.age = age
+        self.name = name
+        self.height_cm = height_cm
+        self.age_days = age_days
 
-   def grow(self, days: int):
-	"""Increase the plant's age and height by the given days."""
 
-      self.age += days
-      self.height += days
+class PlantFactory:
+    """
+    Factory responsible for creating plants and counting them.
+    """
 
-   def display_info(self):
-	"""Display the current state of the plant."""
-	
-      print(f"{self.name}: {self.height}cm, {self.age} days old")
+    def __init__(self):
+        """
+        Initializes the plant factory with zero created plants.
+        """
 
-if __name__ == "__main__":
-   plant = Plant("Tomato", 20, 15)
+        self.count = 0
 
-   print("Before growth:")
-   plant.display_info()
+    def create_plant(self, name, height_cm, age_days):
+        """
+        Creates a new Plant instance and updates the factory counter.
+        """
 
-   plant.grow(10)
+        self.count += 1
+        return Plant(name, height_cm, age_days)
 
-   print("After growth:")
-   plant.display_info()
+
+factory = PlantFactory()
+
+plant1 = factory.create_plant("Rose", 25, 30)
+plant2 = factory.create_plant("Oak", 200, 365)
+plant3 = factory.create_plant("Cactus", 5, 90)
+plant4 = factory.create_plant("Sunflower", 80, 45)
+plant5 = factory.create_plant("Fern", 15, 120)
+
+print("=== Plant Factory Output ===")
+print(f"Created: {plant1.name} ({plant1.height_cm}cm, {plant1.age_days} days)")
+print(f"Created: {plant2.name} ({plant2.height_cm}cm, {plant2.age_days} days)")
+print(f"Created: {plant3.name} ({plant3.height_cm}cm, {plant3.age_days} days)")
+print(f"Created: {plant4.name} ({plant4.height_cm}cm, {plant4.age_days} days)")
+print(f"Created: {plant5.name} ({plant5.height_cm}cm, {plant5.age_days} days)")
+print()
+print(f"Total plants created: {factory.count}")
