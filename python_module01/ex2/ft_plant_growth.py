@@ -1,15 +1,14 @@
 """
-Module 01 - ex3: Plant factory.
+Module 01 - ex2: Plant Gwowth.
 
-This script defines a PlantFactory class responsible for creating Plant
-objects, tracking how many plants have been created, and printing the factory
-output exactly as specified in the subject example.
+Reuse the Plant class from the previous exercise and add behaviors:
+grow(), age() y get_info(), showing the change over the course of a week.
 """
 
 
 class Plant:
     """
-    Represents a plant with a name, height in centimeters, and age in days.
+    It represents a plant with its name, height in cm, and age in days.
     """
 
     def __init__(self, name, height_cm, age_days):
@@ -21,41 +20,44 @@ class Plant:
         self.height_cm = height_cm
         self.age_days = age_days
 
-
-class PlantFactory:
-    """
-    Factory responsible for creating plants and counting them.
-    """
-
-    def __init__(self):
+    def grow(self):
         """
-        Initializes the plant factory with zero created plants.
+        Increments the height of the plant to simulate growth.
         """
 
-        self.count = 0
+        self.height_cm += 1
 
-    def create_plant(self, name, height_cm, age_days):
+    def age(self):
         """
-        Creates a new Plant instance and updates the factory counter.
+        Increments the age of the plant to simulate the passage of time.
         """
 
-        self.count += 1
-        return Plant(name, height_cm, age_days)
+        self.age_days += 1
+
+    def get_info(self):
+        """
+        Returns a string with the current state in the
+        formatspecified in the subject.
+        """
+
+        return f"{self.name}: {self.height_cm}cm, {self.age_days} days old"
 
 
-factory = PlantFactory()
+plant1 = Plant("Rose", 25, 30)
+plant2 = Plant("Sunflower", 80, 45)
 
-plant1 = factory.create_plant("Rose", 25, 30)
-plant2 = factory.create_plant("Oak", 200, 365)
-plant3 = factory.create_plant("Cactus", 5, 90)
-plant4 = factory.create_plant("Sunflower", 80, 45)
-plant5 = factory.create_plant("Fern", 15, 120)
+print("=== Day 1 ===")
+print(plant1.get_info())
 
-print("=== Plant Factory Output ===")
-print(f"Created: {plant1.name} ({plant1.height_cm}cm, {plant1.age_days} days)")
-print(f"Created: {plant2.name} ({plant2.height_cm}cm, {plant2.age_days} days)")
-print(f"Created: {plant3.name} ({plant3.height_cm}cm, {plant3.age_days} days)")
-print(f"Created: {plant4.name} ({plant4.height_cm}cm, {plant4.age_days} days)")
-print(f"Created: {plant5.name} ({plant5.height_cm}cm, {plant5.age_days} days)")
-print()
-print(f"Total plants created: {factory.count}")
+initial_height = plant1.height_cm
+
+days_to_simulate = 6
+for _ in range(days_to_simulate):
+    plant1.grow()
+    plant1.age()
+    plant2.grow()
+    plant2.age()
+
+print("=== Day 7 ===")
+print(plant1.get_info())
+print(f"Growth this week: +{plant1.height_cm - initial_height}cm")
