@@ -220,7 +220,8 @@ class GardenManager:
 
     def create_garden(self, owner):
         """
-        Instance method that creates and registers a new garden and tracks total
+        Instance method that creates and registers a new garden and tracks
+        total
         managers.
         """
 
