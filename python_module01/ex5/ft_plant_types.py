@@ -100,14 +100,18 @@ print("=== Garden Plant Types ===")
 print()
 print(
     f"{flower1.name} (Flower): {flower1.height_cm}cm, {flower1.age_days}"
-    "days, {flower1.color} color"
+    f" days, {flower1.color} color"
 )
 flower1.bloom()
 print()
-print(f"{tree1.name} (Tree): {tree1.height_cm}cm, {tree1.age_days} days, \
-{tree1.trunk_diameter}cm diameter")
+print(
+    f"{tree1.name} (Tree): {tree1.height_cm}cm, {tree1.age_days} days, "
+    f"{tree1.trunk_diameter}cm diameter"
+)
 tree1.produce_shade()
 print()
-print(f"{vegetable1.name} (Vegetable): {vegetable1.height_cm}cm, \
-{vegetable1.age_days} days, {vegetable1.harvest_season} harvest")
+print(
+    f"{vegetable1.name} (Vegetable): {vegetable1.height_cm}cm, "
+    f"{vegetable1.age_days} days, {vegetable1.harvest_season} harvest"
+)
 print(f"{vegetable1.name} is rich in {vegetable1.nutritional_value}")

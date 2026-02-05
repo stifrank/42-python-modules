@@ -80,8 +80,10 @@ class FloweringPlant(Plant):
         """
 
         status = " (blooming)" if self.blooming else ""
-        return f"- {self.name}: {self.height_cm}cm, {self.flower_color} \
-flowers{status}"
+        return (
+            f"- {self.name}: {self.height_cm}cm, "
+            f"{self.flower_color} flowers{status}"
+        )
 
     def plant_type(self):
         """
@@ -203,11 +205,9 @@ class GardenManager:
     @classmethod
     def create_garden_network(cls):
         """
-        Class method that creates a new GardenManager network and tracks total
-        managers.
+        Class method that creates a new GardenManager network.
         """
 
-        cls.total_gardens_managed += 1
         return cls()
 
     @staticmethod
@@ -220,10 +220,12 @@ class GardenManager:
 
     def create_garden(self, owner):
         """
-        Instance method that creates and registers a new garden.
+        Instance method that creates and registers a new garden and tracks total
+        managers.
         """
 
         self.gardens[owner] = Garden(owner)
+        GardenManager.total_gardens_managed += 1
 
     def get_garden(self, owner):
         """
@@ -258,8 +260,10 @@ print(oak.report_line())
 print(rose.report_line())
 print(sunflower.report_line())
 print()
-print(f"Plants added: {len(alice_garden.plants)}, Total growth: \
-{alice_garden.total_growth}cm")
+print(
+    f"Plants added: {len(alice_garden.plants)}, Total growth: "
+    f"{alice_garden.total_growth}cm"
+)
 
 type_counts = manager.stats.count_plant_types(alice_garden)
 print(
