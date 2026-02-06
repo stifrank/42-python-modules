@@ -4,8 +4,9 @@ Module 02 - ex4: Raising errors.
 Uses raise to signal invalid plant health conditions.
 """
 
+
 def check_plant_health(plant_name, water_level, sunlight_hours):
-	"""Validate plant health values and raise errors when invalid."""
+    """Validate plant health values and raise errors when invalid."""
 
     if not plant_name:
         raise ValueError("Plant name cannot be empty!")
@@ -18,13 +19,16 @@ def check_plant_health(plant_name, water_level, sunlight_hours):
     if sunlight_hours < 2:
         raise ValueError(f"Sunlight hours {sunlight_hours} is too low (min 2)")
     if sunlight_hours > 12:
-        raise ValueError(f"Sunlight hours {sunlight_hours} is too high (max 12)")
+        raise ValueError(
+                        f"Sunlight hours {sunlight_hours} "
+                        f"is too high (max 12)"
+        )
 
     return f"Plant '{plant_name}' is healthy!"
 
 
 def test_plant_checks():
-	"""Demonstrate error raising and handling for plant health checks."""
+    """Demonstrate error raising and handling for plant health checks."""
     print("=== Garden Plant Health Checker ===")
 
     print("Testing good values...")
