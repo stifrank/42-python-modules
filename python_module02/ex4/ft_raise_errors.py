@@ -30,11 +30,13 @@ def check_plant_health(plant_name, water_level, sunlight_hours):
 def test_plant_checks():
     """Demonstrate error raising and handling for plant health checks."""
     print("=== Garden Plant Health Checker ===")
+    print()
 
     print("Testing good values...")
     try:
         result = check_plant_health("tomato", 5, 8)
         print(result)
+        print()
     except ValueError as e:
         print(f"Error: {e}")
 
@@ -43,18 +45,21 @@ def test_plant_checks():
         check_plant_health("", 5, 8)
     except ValueError as e:
         print(f"Error: {e}")
+        print()
 
     print("Testing bad water level...")
     try:
         check_plant_health("lettuce", 15, 8)
     except ValueError as e:
         print(f"Error: {e}")
+        print()
 
     print("Testing bad sunlight hours...")
     try:
         check_plant_health("carrots", 5, 0)
     except ValueError as e:
         print(f"Error: {e}")
+        print()
 
     print("All error raising tests completed!")
 
