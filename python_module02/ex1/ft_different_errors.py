@@ -5,7 +5,7 @@ Demonstrates handling multiple built-in exception types using try/except.
 """
 
 
-def garden_operations():
+def garden_operations() -> None:
     """Trigger and catch different common Python exceptions."""
 
     print("Testing ValueError...")
@@ -38,7 +38,7 @@ def garden_operations():
         print()
 
 
-def test_error_types():
+def test_error_types() -> None:
     """Demonstrate individual and grouped exception handling."""
 
     print("=== Garden Error Types Demo ===")

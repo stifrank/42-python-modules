@@ -5,7 +5,7 @@ Introduces basic try/except to validate and handle invalid input safely.
 """
 
 
-def check_temperature(temp_str: str):
+def check_temperature(temp_str: str) -> int | None:
     """Validate a temperature value and handle conversion and range errors."""
 
     try:
@@ -25,7 +25,7 @@ def check_temperature(temp_str: str):
     return temp
 
 
-def test_temperature_input():
+def test_temperature_input() -> None:
     """Demonstrate temperature validation with valid and invalid inputs."""
 
     print("=== Garden Temperature Checker ===")

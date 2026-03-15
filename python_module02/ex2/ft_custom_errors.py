@@ -23,19 +23,19 @@ class WaterError(GardenError):
     pass
 
 
-def trigger_plant_error():
+def trigger_plant_error() -> None:
     """Raise a PlantError to simulate a plant-related failure."""
 
     raise PlantError("The tomato plant is wilting!")
 
 
-def trigger_water_error():
+def trigger_water_error() -> None:
     """Raise a WaterError to simulate a watering-related failure."""
 
     raise WaterError("Not enough water in the tank!")
 
 
-def test_custom_errors():
+def test_custom_errors() -> None:
     """Demonstrate catching specific and base custom exceptions."""
 
     print("=== Custom Garden Errors Demo ===")

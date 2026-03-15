@@ -5,7 +5,7 @@ Demonstrates using finally to ensure cleanup always occurs.
 """
 
 
-def water_plants(plant_list):
+def water_plants(plant_list: list) -> None:
     """Water plants and always close the watering system using finally."""
 
     print("Opening watering system")
@@ -14,14 +14,14 @@ def water_plants(plant_list):
             try:
                 plant_name = plant.lower()
                 print(f"Watering {plant_name}")
-            except Exception:
+            except AttributeError:
                 print(f"Error: Cannot water {plant} - invalid plant!")
                 return
     finally:
         print("Closing watering system (cleanup)")
 
 
-def test_watering_system():
+def test_watering_system() -> None:
     """Demonstrate cleanup behavior with valid and invalid plant lists."""
 
     print("=== Garden Watering System ===")

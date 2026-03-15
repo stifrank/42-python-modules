@@ -26,12 +26,17 @@ class WaterError(GardenError):
 class GardenManager:
     """Manage plants and handle garden operations safely."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize the garden manager with an empty plant list."""
 
         self.plants = []
 
-    def add_plant(self, plant_name, water_level, sunlight_hours):
+    def add_plant(
+        self,
+        plant_name: str,
+        water_level: int,
+        sunlight_hours: int
+    ) -> None:
         """Add a plant to the garden or raise an error if invalid."""
 
         if not plant_name:
@@ -45,7 +50,7 @@ class GardenManager:
         )
         print(f"Added {plant_name} successfully")
 
-    def water_plants(self):
+    def water_plants(self) -> None:
         """Water all plants and always clean up the watering system."""
 
         print("Opening watering system")
@@ -55,7 +60,12 @@ class GardenManager:
         finally:
             print("Closing watering system (cleanup)")
 
-    def check_plant_health(self, plant_name, water_level, sunlight_hours):
+    def check_plant_health(
+        self,
+        plant_name: str,
+        water_level: int,
+        sunlight_hours: int
+    ) -> None:
         """Check health conditions for a single plant."""
 
         if not plant_name:
@@ -82,22 +92,22 @@ class GardenManager:
             f"sun: {sunlight_hours})"
         )
 
-    def check_all_health(self):
+    def check_all_health(self) -> None:
         """Check health conditions for all plants in the garden."""
 
         print("Checking plant health...")
         for plant in self.plants:
             try:
                 self.check_plant_health(
-                                        plant["name"],
-                                        plant["water"],
-                                        plant["sun"]
+                                    plant["name"],
+                                    plant["water"],
+                                    plant["sun"]
                                     )
             except PlantError as e:
                 print(f"Error checking {plant['name']}: {e}")
 
 
-def test_garden_management():
+def test_garden_management() -> None:
     """Demonstrate full garden management with error handling and cleanup."""
 
     print("=== Garden Management System ===")

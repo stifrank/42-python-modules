@@ -5,7 +5,11 @@ Uses raise to signal invalid plant health conditions.
 """
 
 
-def check_plant_health(plant_name, water_level, sunlight_hours):
+def check_plant_health(
+    plant_name: str,
+    water_level: int,
+    sunlight_hours: int,
+) -> str:
     """Validate plant health values and raise errors when invalid."""
 
     if not plant_name:
@@ -27,7 +31,7 @@ def check_plant_health(plant_name, water_level, sunlight_hours):
     return f"Plant '{plant_name}' is healthy!"
 
 
-def test_plant_checks():
+def test_plant_checks() -> None:
     """Demonstrate error raising and handling for plant health checks."""
     print("=== Garden Plant Health Checker ===")
     print()
