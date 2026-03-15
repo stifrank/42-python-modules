@@ -1,113 +1,129 @@
-print("=== Player Inventory System ===")
+import sys
 
-inventories = dict({
-    "alice": dict({
-        "sword": dict({"type": "weapon", "rarity": "rare", "qty": 1, "value": 500}),
-        "potion": dict({"type": "consumable", "rarity": "common", "qty": 5, "value": 50}),
-        "shield": dict({"type": "armor", "rarity": "uncommon", "qty": 1, "value": 200}),
-    }),
-    "bob": dict({
-        "potion": dict({"type": "consumable", "rarity": "common", "qty": 0, "value": 50}),
-        "magic_ring": dict({"type": "accessory", "rarity": "rare", "qty": 1, "value": 600}),
-    }),
-})
+print("=== Inventory System Analysis ===")
 
-
-def print_inventory(player_name, inv):
-    print(f"=== {player_name.capitalize()}'s Inventory ===")
-
-    total_value = 0
-    total_items = 0
-    categories = dict({})
-
-    for item_name, info in inv.items():
-        qty = info.get("qty")
-        value = info.get("value")
-        item_type = info.get("type")
-        rarity = info.get("rarity")
-
-        line_value = qty * value
-        total_value += line_value
-        total_items += qty
-
-        if categories.get(item_type) is None:
-            categories.update({item_type: qty})
-        else:
-            categories.update({item_type: categories.get(item_type) + qty})
-
-        print(f"{item_name} ({item_type}, {rarity}): {qty}x @ {value} gold each = {line_value} gold")
-
-    print(f"Inventory value: {total_value} gold")
-    print(f"Item count: {total_items} items")
-
-    cat_parts = []
-    for cat, qty in categories.items():
-        cat_parts.append(f"{cat}({qty})")
-    print("Categories: " + ", ".join(cat_parts))
-
-    return total_value, total_items
-
-
-# 1) Mostrar inventario de Alice
-alice_inv = inventories.get("alice")
-print_inventory("alice", alice_inv)
-
-# 2) Transacción: Alice da a Bob 2 potions
-print("=== Transaction: Alice gives Bob 2 potions ===")
-
-alice_potion = alice_inv.get("potion")
-bob_inv = inventories.get("bob")
-bob_potion = bob_inv.get("potion")
-
-if alice_potion is not None and bob_potion is not None and alice_potion.get("qty") >= 2:
-    alice_potion.update({"qty": alice_potion.get("qty") - 2})
-    bob_potion.update({"qty": bob_potion.get("qty") + 2})
-    print("Transaction successful!")
+if len(sys.argv) == 1:
+    print(
+        "No inventory provided. Usage: "
+        "python3 ft_inventory_system.py sword:1 potion:5 shield:2"
+    )
 else:
-    print("Transaction failed!")
+    item_data = dict({
+        "sword": dict({"type": "weapon", "value": 100}),
+        "potion": dict({"type": "consumable", "value": 20}),
+        "shield": dict({"type": "armor", "value": 80}),
+        "armor": dict({"type": "armor", "value": 120}),
+        "helmet": dict({"type": "armor", "value": 60}),
+    })
 
-print("=== Updated Inventories ===")
-print(f"Alice potions: {alice_inv.get('potion').get('qty')}")
-print(f"Bob potions: {bob_inv.get('potion').get('qty')}")
+    inventory = dict({})
 
-# 3) Analytics global
-print("=== Inventory Analytics ===")
+    i = 1
+    while i < len(sys.argv):
+        parts = sys.argv[i].split(":")
+        if len(parts) == 2:
+            item_name = parts[0]
+            quantity = int(parts[1])
 
-values = dict({})
-items_count = dict({})
+            item_info = item_data.get(
+                item_name,
+                dict({"type": "unknown", "value": 0})
+            )
 
-for player, inv in inventories.items():
-    total_value = 0
+            inventory.update({
+                item_name: dict({
+                    "name": item_name,
+                    "type": item_info.get("type"),
+                    "quantity": quantity,
+                    "value": item_info.get("value"),
+                })
+            })
+        i += 1
+
     total_items = 0
-    for _, info in inv.items():
-        total_value += info.get("qty") * info.get("value")
-        total_items += info.get("qty")
-    values.update({player: total_value})
-    items_count.update({player: total_items})
+    for info in inventory.values():
+        total_items += info.get("quantity")
 
-# Most valuable player
-most_valuable = None
-most_value = -1
-for player, val in values.items():
-    if val > most_value:
-        most_value = val
-        most_valuable = player
-print(f"Most valuable player: {most_valuable.capitalize()} ({most_value} gold)")
+    print(f"Total items in inventory: {total_items}")
+    print(f"Unique item types: {len(inventory)}")
 
-# Most items
-most_items_player = None
-most_items = -1
-for player, cnt in items_count.items():
-    if cnt > most_items:
-        most_items = cnt
-        most_items_player = player
-print(f"Most items: {most_items_player.capitalize()} ({most_items} items)")
+    print("=== Current Inventory ===")
+    for item_name, info in inventory.items():
+        quantity = info.get("quantity")
+        percentage = (quantity / total_items) * 100
+        print(f"{item_name}: {quantity} units ({percentage:.1f}%)")
 
-# Rarest items (por rareza = 'rare', listado por nombre)
-rare_names = set()
-for _, inv in inventories.items():
-    for item_name, info in inv.items():
-        if info.get("rarity") == "rare":
-            rare_names = rare_names.union(set([item_name]))
+    most_abundant = None
+    least_abundant = None
 
-print("Rarest items: " + ", ".join(rare_names))
+    for item_name, info in inventory.items():
+        if most_abundant is None:
+            most_abundant = item_name
+            least_abundant = item_name
+        else:
+            if (
+                info.get("quantity")
+                > inventory.get(most_abundant).get("quantity")
+            ):
+                most_abundant = item_name
+            if (
+                info.get("quantity")
+                < inventory.get(least_abundant).get("quantity")
+            ):
+                least_abundant = item_name
+
+    print("=== Inventory Statistics ===")
+    print(
+        f"Most abundant: {most_abundant} "
+        f"({inventory.get(most_abundant).get('quantity')} units)"
+    )
+    print(
+        f"Least abundant: {least_abundant} "
+        f"({inventory.get(least_abundant).get('quantity')} units)"
+    )
+
+    abundant = dict({})
+    moderate = dict({})
+    scarce = dict({})
+
+    for item_name, info in inventory.items():
+        quantity = info.get("quantity")
+        if quantity >= 6:
+            abundant.update({item_name: quantity})
+        elif quantity >= 4:
+            moderate.update({item_name: quantity})
+        else:
+            scarce.update({item_name: quantity})
+
+    print("=== Item Categories ===")
+    if len(abundant) > 0:
+        print(f"Abundant: {abundant}")
+    if len(moderate) > 0:
+        print(f"Moderate: {moderate}")
+    if len(scarce) > 0:
+        print(f"Scarce: {scarce}")
+
+    restock = []
+
+    for item_name, info in inventory.items():
+        if info.get("quantity") <= 1:
+            restock.append(item_name)
+
+    print("=== Management Suggestions ===")
+    if len(restock) > 0:
+        print("Restock needed: " + ", ".join(restock))
+    else:
+        print("No restock needed.")
+
+    print("=== Dictionary Properties Demo ===")
+    print("Dictionary keys: " + ", ".join(inventory.keys()))
+
+    values_text = []
+    for info in inventory.values():
+        values_text.append(str(info.get("quantity")))
+    print("Dictionary values: " + ", ".join(values_text))
+
+    print(
+        "Sample lookup - 'sword' in inventory: "
+        f"{inventory.get('sword') is not None}"
+    )
