@@ -25,8 +25,8 @@ def garden_operations() -> None:
     print("Testing FileNotFoundError...")
     try:
         open("missing.txt", "r")
-    except FileNotFoundError:
-        print("Caught FileNotFoundError: No such file 'missing.txt'")
+    except FileNotFoundError as e:
+        print(f"Caught FileNotFoundError: {e}")
         print()
 
     print("Testing KeyError...")
