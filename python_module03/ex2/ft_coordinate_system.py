@@ -2,17 +2,19 @@ import math
 
 print("=== Game Coordinate System ===")
 
-# 1) Posición fija (demo simple)
+# 1) Posición fija
 position = (10, 20, 5)
 print(f"Position created: {position}")
 
-# 2) Distancia 3D
+# 2) Distancia 3D desde el origen
 origin = (0, 0, 0)
+
 dx = position[0] - origin[0]
 dy = position[1] - origin[1]
 dz = position[2] - origin[2]
-dist = math.sqrt(dx * dx + dy * dy + dz * dz)
-print(f"Distance between {origin} and {position}: {dist:.2f}")
+
+distance = math.sqrt(dx * dx + dy * dy + dz * dz)
+print(f"Distance between {origin} and {position}: {distance:.2f}")
 
 # 3) Parsear coordenadas válidas
 coord_str = "3,4,0"
@@ -26,13 +28,14 @@ try:
     dx = parsed[0] - origin[0]
     dy = parsed[1] - origin[1]
     dz = parsed[2] - origin[2]
-    dist = math.sqrt(dx * dx + dy * dy + dz * dz)
-    print(f"Distance between {origin} and {parsed}: {dist}")
+
+    distance = math.sqrt(dx * dx + dy * dy + dz * dz)
+    print(f"Distance between {origin} and {parsed}: {distance}")
 except ValueError as e:
     print(f"Error parsing coordinates: {e}")
     print(f"Error details - Type: {type(e).__name__}, Args: {e.args}")
 
-# 4) Parsear coordenadas inválidas con try/except
+# 4) Parsear coordenadas inválidas
 bad_str = "abc,def,ghi"
 print(f'Parsing invalid coordinates: "{bad_str}"')
 
@@ -44,8 +47,9 @@ except ValueError as e:
     print(f"Error parsing coordinates: {e}")
     print(f"Error details - Type: {type(e).__name__}, Args: {e.args}")
 
-# 5) Unpacking demonstration
+# 5) Tuple unpacking
 print("Unpacking demonstration:")
+
 x, y, z = parsed
 print(f"Player at x={x}, y={y}, z={z}")
 print(f"Coordinates: X={x}, Y={y}, Z={z}")

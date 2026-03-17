@@ -81,7 +81,9 @@ unique_achievements = {
 }
 print(f"Unique achievements: {unique_achievements}")
 
-active_regions = {region for region in ["north", "east", "central", "east", "north"]}
+active_regions = {
+    region for region in ["north", "east", "central", "east", "north"]
+}
 print(f"Active regions: {active_regions}")
 
 print("=== Combined Analysis ===")
@@ -90,7 +92,11 @@ total_players = len(players)
 total_unique_achievements = len(unique_achievements)
 average_score = sum([scores[player] for player in players]) / len(players)
 
-sorted_players = sorted(players, key=lambda player: scores[player], reverse=True)
+sorted_players = sorted(
+    players,
+    key=lambda player: scores[player],
+    reverse=True
+)
 top_player = sorted_players[0]
 
 print(f"Total players: {total_players}")
@@ -98,5 +104,6 @@ print(f"Total unique achievements: {total_unique_achievements}")
 print(f"Average score: {average_score}")
 print(
     f"Top performer: {top_player} "
-    f"({scores[top_player]} points, {len(achievements[top_player])} achievements)"
+    f"({scores[top_player]} points, "
+    f"{len(achievements[top_player])} achievements)"
 )

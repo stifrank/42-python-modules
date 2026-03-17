@@ -2,7 +2,13 @@ print("=== Achievement Tracker System ===")
 
 alice = {"first_kill", "level_10", "treasure_hunter", "speed_demon"}
 bob = {"first_kill", "level_10", "boss_slayer", "collector"}
-charlie = {"level_10", "treasure_hunter", "boss_slayer", "speed_demon", "perfectionist"}
+charlie = {
+    "level_10",
+    "treasure_hunter",
+    "boss_slayer",
+    "speed_demon",
+    "perfectionist",
+}
 
 print(f"Player alice achievements: {alice}")
 print(f"Player bob achievements: {bob}")
@@ -10,19 +16,20 @@ print(f"Player charlie achievements: {charlie}")
 
 print("=== Achievement Analytics ===")
 
-# 1) Todos los logros únicos (union)
+# 1) Todos los logros únicos
 all_unique = alice.union(bob).union(charlie)
 print(f"All unique achievements: {all_unique}")
 print(f"Total unique achievements: {len(all_unique)}")
 
-# 2) Comunes a todos (intersection)
+# 2) Logros comunes a todos
 common_all = alice.intersection(bob).intersection(charlie)
 print(f"Common to all players: {common_all}")
 
-# 3) Raros: aparecen en EXACTAMENTE 1 jugador
+# 3) Logros raros (exactamente un jugador)
 rare_alice = alice.difference(bob).difference(charlie)
 rare_bob = bob.difference(alice).difference(charlie)
 rare_charlie = charlie.difference(alice).difference(bob)
+
 rare = rare_alice.union(rare_bob).union(rare_charlie)
 print(f"Rare achievements (1 player): {rare}")
 
