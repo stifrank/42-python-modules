@@ -44,7 +44,9 @@ print(f"High scorers (>2000): {high_scorers}")
 scores_doubled = [scores[player] * 2 for player in players]
 print(f"Scores doubled: {scores_doubled}")
 
-active_players = [player for player in players if len(achievements[player]) > 0]
+active_players = [
+    player for player in players if len(achievements[player]) > 0
+]
 print(f"Active players: {active_players}")
 
 print("=== Dict Comprehension Examples ===")
