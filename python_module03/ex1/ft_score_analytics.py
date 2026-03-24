@@ -1,35 +1,35 @@
-print("=== Score Analytics System ===")
+import sys
 
-score_input = "120,85,90,invalid,100,75"
-print(f"Processing scores: {score_input}")
+print("=== Player Score Analytics ===")
 
-parts = score_input.split(",")
-
-valid_scores = []
-invalid_entries = 0
-
-for p in parts:
-    try:
-        score = int(p)
-        valid_scores.append(score)
-    except ValueError:
-        print(f"Invalid entry skipped: {p}")
-        invalid_entries += 1
-
-if len(valid_scores) > 0:
-    total_scores = len(valid_scores)
-    average = sum(valid_scores) / total_scores
-    highest = max(valid_scores)
-    lowest = min(valid_scores)
-
-    print("=== Score Statistics ===")
-    print(f"Valid scores: {valid_scores}")
-    print(f"Average score: {average}")
-    print(f"Highest score: {highest}")
-    print(f"Lowest score: {lowest}")
+if len(sys.argv) == 1:
+    print(
+        "No scores provided. Usage: "
+        "python3 ft_score_analytics.py <score1> <score2> ..."
+    )
 else:
-    print("No valid scores found.")
+    scores = []
 
-print("=== Processing Summary ===")
-print(f"Valid entries: {len(valid_scores)}")
-print(f"Invalid entries: {invalid_entries}")
+    try:
+        i = 1
+        while i < len(sys.argv):
+            scores.append(int(sys.argv[i]))
+            i += 1
+
+        total_players = len(scores)
+        total_score = sum(scores)
+        average_score = total_score / total_players
+        high_score = max(scores)
+        low_score = min(scores)
+        score_range = high_score - low_score
+
+        print(f"Scores processed: {scores}")
+        print(f"Total players: {total_players}")
+        print(f"Total score: {total_score}")
+        print(f"Average score: {average_score}")
+        print(f"High score: {high_score}")
+        print(f"Low score: {low_score}")
+        print(f"Score range: {score_range}")
+
+    except ValueError:
+        print("Error: Invalid score detected. Please provide only integers.")

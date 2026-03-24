@@ -44,7 +44,9 @@ print(f"High scorers (>2000): {high_scorers}")
 scores_doubled = [scores[player] * 2 for player in players]
 print(f"Scores doubled: {scores_doubled}")
 
-active_players = [player for player in players if len(achievements[player]) > 0]
+active_players = [
+    player for player in players if len(achievements[player]) > 0
+]
 print(f"Active players: {active_players}")
 
 print("=== Dict Comprehension Examples ===")
@@ -92,12 +94,10 @@ total_players = len(players)
 total_unique_achievements = len(unique_achievements)
 average_score = sum([scores[player] for player in players]) / len(players)
 
-sorted_players = sorted(
-    players,
-    key=lambda player: scores[player],
-    reverse=True
-)
-top_player = sorted_players[0]
+top_player = max(scores)
+for player in players:
+    if scores[player] > scores[top_player]:
+        top_player = player
 
 print(f"Total players: {total_players}")
 print(f"Total unique achievements: {total_unique_achievements}")
