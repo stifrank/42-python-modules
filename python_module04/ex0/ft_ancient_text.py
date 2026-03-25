@@ -1,14 +1,27 @@
-print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===")
-print("Accessing Storage Vault: ancient_fragment.txt")
+def ft_ancient_text() -> None:
+    print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===")
+    print()
+    print("Accessing Storage Vault: ancient_fragment.txt")
 
-try:
-    file = open("ancient_fragment.txt", "r")
-except:
-    print("ERROR: Storage vault not found. Run data generator first.")
-else:
+    try:
+        file = open("ancient_fragment.txt", "r")
+    except FileNotFoundError:
+        print("ERROR: Storage vault not found. Run data generator first.")
+        return
+
     print("Connection established...")
+    print()
     print("RECOVERED DATA:")
-    data = file.read()
-    print(data, end="")
-    file.close()
-    print("\nData recovery complete. Storage unit disconnected.")
+
+    try:
+        data = file.read()
+        print(data)
+    finally:
+        file.close()
+
+    print()
+    print("Data recovery complete. Storage unit disconnected.")
+
+
+if __name__ == "__main__":
+    ft_ancient_text()
