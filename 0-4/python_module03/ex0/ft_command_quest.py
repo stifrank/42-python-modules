@@ -3,8 +3,8 @@ import sys
 print("=== Command Quest ===")
 
 if len(sys.argv) == 1:
-    print("No arguments provided!")
     print(f"Program name: {sys.argv[0]}")
+    print("No arguments provided!")
 else:
     print(f"Program name: {sys.argv[0]}")
     print(f"Arguments received: {len(sys.argv) - 1}")
@@ -14,3 +14,4 @@ else:
         i += 1
 
 print(f"Total arguments: {len(sys.argv)}")
+print()
