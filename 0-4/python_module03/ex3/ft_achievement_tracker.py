@@ -1,39 +1,67 @@
-print("=== Achievement Tracker System ===")
+import random
 
-alice = {"first_kill", "level_10", "treasure_hunter", "speed_demon"}
-bob = {"first_kill", "level_10", "boss_slayer", "collector"}
-charlie = {
-    "level_10",
-    "treasure_hunter",
-    "boss_slayer",
-    "speed_demon",
-    "perfectionist",
-}
+print("=== Achievement Tracker System ===\n")
 
-print(f"Player alice achievements: {alice}")
-print(f"Player bob achievements: {bob}")
-print(f"Player charlie achievements: {charlie}")
 
-print("=== Achievement Analytics ===")
+def gen_player_achievements():
+    all_achievements = [
+        "First Steps",
+        "Speed Runner",
+        "Boss Slayer",
+        "Treasure Hunter",
+        "Master Explorer",
+        "Collector Supreme",
+        "World Savior",
+        "Strategist",
+        "Untouchable",
+        "Crafting Genius",
+        "Sharp Mind",
+        "Survivor",
+        "Unstoppable",
+        "Hidden Path Finder",
+    ]
 
-# 1) Todos los logros únicos
-all_unique = alice.union(bob).union(charlie)
-print(f"All unique achievements: {all_unique}")
-print(f"Total unique achievements: {len(all_unique)}")
+    count = random.randint(5, 9)
+    return set(random.sample(all_achievements, count))
 
-# 2) Logros comunes a todos
-common_all = alice.intersection(bob).intersection(charlie)
-print(f"Common to all players: {common_all}")
 
-# 3) Logros raros (exactamente un jugador)
-rare_alice = alice.difference(bob).difference(charlie)
-rare_bob = bob.difference(alice).difference(charlie)
-rare_charlie = charlie.difference(alice).difference(bob)
+alice = gen_player_achievements()
+bob = gen_player_achievements()
+charlie = gen_player_achievements()
+dylan = gen_player_achievements()
 
-rare = rare_alice.union(rare_bob).union(rare_charlie)
-print(f"Rare achievements (1 player): {rare}")
+print(f"Player Alice: {alice}")
+print(f"Player Bob: {bob}")
+print(f"Player Charlie: {charlie}")
+print(f"Player Dylan: {dylan}")
+print()
 
-# 4) Comparación Alice vs Bob
-print(f"Alice vs Bob common: {alice.intersection(bob)}")
-print(f"Alice unique: {alice.difference(bob)}")
-print(f"Bob unique: {bob.difference(alice)}")
+all_distinct = alice.union(bob).union(charlie).union(dylan)
+print(f"All distinct achievements: {all_distinct}")
+print()
+
+common = alice.intersection(bob).intersection(charlie).intersection(dylan)
+print(f"Common achievements: {common}")
+print()
+
+only_alice = alice.difference(bob.union(charlie).union(dylan))
+only_bob = bob.difference(alice.union(charlie).union(dylan))
+only_charlie = charlie.difference(alice.union(bob).union(dylan))
+only_dylan = dylan.difference(alice.union(bob).union(charlie))
+
+print(f"Only Alice has: {only_alice}")
+print(f"Only Bob has: {only_bob}")
+print(f"Only Charlie has: {only_charlie}")
+print(f"Only Dylan has: {only_dylan}")
+print()
+
+alice_missing = all_distinct.difference(alice)
+bob_missing = all_distinct.difference(bob)
+charlie_missing = all_distinct.difference(charlie)
+dylan_missing = all_distinct.difference(dylan)
+
+print(f"Alice is missing: {alice_missing}")
+print(f"Bob is missing: {bob_missing}")
+print(f"Charlie is missing: {charlie_missing}")
+print(f"Dylan is missing: {dylan_missing}")
+print()
