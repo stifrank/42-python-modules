@@ -89,7 +89,7 @@ class JSONAdapter(ProcessingPipeline):
             prepared_data: Dict[str, Any] = {
                 key: value for key, value in data.items()
             }
-            result: Any = self.run_stages(prepared_data)
+            self.run_stages(prepared_data)
             self.processed_count += 1
             self.last_result = (
                 f"Processed temperature reading: "
@@ -114,7 +114,7 @@ class CSVAdapter(ProcessingPipeline):
                 raise ValueError("Invalid CSV data format")
 
             values: List[str] = [item.strip() for item in data.split(",")]
-            result: Any = self.run_stages(values)
+            self.run_stages(values)
             self.processed_count += 1
             self.last_result = (
                 f"User activity logged: {len(values) - 1} actions processed"
@@ -146,7 +146,7 @@ class StreamAdapter(ProcessingPipeline):
             else:
                 average = 0.0
 
-            result: Any = self.run_stages(values)
+            self.run_stages(values)
             self.processed_count += 1
             self.last_result = (
                 f"Stream summary: {len(values)} readings, avg: {average:.1f}°C"
