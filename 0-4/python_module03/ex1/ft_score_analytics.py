@@ -7,15 +7,26 @@ if len(sys.argv) == 1:
         "No scores provided. Usage: "
         "python3 ft_score_analytics.py <score1> <score2> ..."
     )
+    print()
 else:
     scores = []
+    i = 1
 
-    try:
-        i = 1
-        while i < len(sys.argv):
-            scores.append(int(sys.argv[i]))
-            i += 1
+    while i < len(sys.argv):
+        try:
+            value = int(sys.argv[i])
+            scores.append(value)
+        except ValueError:
+            print(f"Invalid parameter: '{sys.argv[i]}'")
+        i += 1
 
+    if len(scores) == 0:
+        print(
+            "No scores provided. Usage: "
+            "python3 ft_score_analytics.py <score1> <score2> ..."
+        )
+        print()
+    else:
         total_players = len(scores)
         total_score = sum(scores)
         average_score = total_score / total_players
@@ -30,6 +41,4 @@ else:
         print(f"High score: {high_score}")
         print(f"Low score: {low_score}")
         print(f"Score range: {score_range}")
-
-    except ValueError:
-        print("Error: Invalid score detected. Please provide only integers.")
+        print()
