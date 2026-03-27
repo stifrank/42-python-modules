@@ -11,7 +11,7 @@ def handle_archive_access(filename: str) -> None:
         with open(filename, "r") as file:
             data = file.read()
 
-        print(f'SUCCESS: Archive recovered - "{data.strip()}"')
+        print(f"SUCCESS: Archive recovered - ``{data.strip()}''")
         print("STATUS: Normal operations resumed")
     except FileNotFoundError:
         print("RESPONSE: Archive not found in storage matrix")
