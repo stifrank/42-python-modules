@@ -109,14 +109,16 @@ def main() -> None:
         mission_id="M2024_MARS",
         mission_name="Mars Colony Establishment",
         destination="Mars",
-        launch_date="2024-10-01T09:00:00",
+        launch_date=datetime.fromisoformat(
+            "2024-10-01T09:00:00"
+        ),
         duration_days=900,
         budget_millions=2500.0,
         crew=[
             CrewMember(
                 member_id="CM001",
                 name="Sarah Connor",
-                rank="commander",
+                rank=Rank.commander,
                 age=42,
                 specialization="Mission Command",
                 years_experience=15,
@@ -124,7 +126,7 @@ def main() -> None:
             CrewMember(
                 member_id="CM002",
                 name="John Smith",
-                rank="lieutenant",
+                rank=Rank.lieutenant,
                 age=35,
                 specialization="Navigation",
                 years_experience=8,
@@ -132,7 +134,7 @@ def main() -> None:
             CrewMember(
                 member_id="CM003",
                 name="Alice Johnson",
-                rank="officer",
+                rank=Rank.officer,
                 age=29,
                 specialization="Engineering",
                 years_experience=6,
@@ -151,14 +153,16 @@ def main() -> None:
             mission_id="M2024_TEST",
             mission_name="Invalid Mission",
             destination="Moon",
-            launch_date="2024-10-01T09:00:00",
+            launch_date=datetime.fromisoformat(
+                "2024-01-15T10:30:00"
+            ),
             duration_days=30,
             budget_millions=100.0,
             crew=[
                 CrewMember(
                     member_id="CM004",
                     name="Junior Cadet",
-                    rank="cadet",
+                    rank=Rank.cadet,
                     age=22,
                     specialization="Support",
                     years_experience=1,
